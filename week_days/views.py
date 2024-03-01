@@ -27,3 +27,10 @@ def get_info_about_week_day(request, week_day):
         return HttpResponse("Дела на воскресенье")
     else:
         return HttpResponseNotFound(f'Не знаю дня недели - {week_day}')
+
+
+def get_info_about_week_day_by_number(request, week_day):
+    if 0 < week_day < 8:
+        return HttpResponse(f"Сегодня {week_day} день недели")
+    else:
+        return HttpResponseNotFound(f'Неверный номер дня - {week_day}')
