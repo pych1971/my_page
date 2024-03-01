@@ -1,36 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
-
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
-# def monday(request):
-#     return HttpResponse("Дела на понедельник")
-#
-#
-# def tuesday(request):
-#     return HttpResponse("Дела на вторник")
+
+days_dict = {
+    'monday': "Дела на понедельник",
+    'tuesday': "Дела на вторник",
+    'wednesday': "Дела на среду",
+    'thursday': "Дела на четверг",
+    'friday': "Дела на пятницу",
+    'saturday': "Дела на субботу",
+    'sunday': "Дела на воскресенье"
+}
+
 
 def get_info_about_week_day(request, week_day):
-    if week_day == 'monday':
-        return HttpResponse("Дела на понедельник")
-    if week_day == 'tuesday':
-        return HttpResponse("Дела на вторник")
-    if week_day == 'wednesday':
-        return HttpResponse("Дела на среду")
-    if week_day == 'thursday':
-        return HttpResponse("Дела на четверг")
-    if week_day == 'friday':
-        return HttpResponse("Дела на пятницу")
-    if week_day == 'saturday':
-        return HttpResponse("Дела на субботу")
-    if week_day == 'sunday':
-        return HttpResponse("Дела на воскресенье")
+    description = days_dict.get(week_day)
+    if description:
+        return HttpResponse(days_dict.get(week_day))
     else:
-        return HttpResponseNotFound(f'Не знаю дня недели - {week_day}')
+        return HttpResponseNotFound(f'Неверный день недели - {week_day}')
 
 
 def get_info_about_week_day_by_number(request, week_day):
-    if 0 < week_day < 8:
-        return HttpResponse(f"Сегодня {week_day} день недели")
-    else:
+    days = list(days_dict)
+    if week_day > len(days):
         return HttpResponseNotFound(f'Неверный номер дня - {week_day}')
+    day = days[week_day - 1]
+    return HttpResponseRedirect(f"/todo_week/{day}")
