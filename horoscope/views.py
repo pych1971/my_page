@@ -16,7 +16,7 @@ zodiac_dict = {
     'sagittarius': 'Стрелец - девятый знак зодиака, планета Юпитер (с 23 ноября по 22 декабря).',
     'capricorn': 'Козерог - десятый знак зодиака, планета Сатурн (с 23 декабря по 20 января).',
     'aquarius': 'Водолей - одиннадцатый знак зодиака, планеты Уран и Сатурн (с 21 января по 19 февраля).',
-    'pisces': 'Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта).',
+    'pisces': 'Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта).'
 }
 
 type_dict = {
@@ -24,6 +24,21 @@ type_dict = {
     'earth': ['taurus', 'virgo', 'capricorn'],
     'air': ['gemini', 'libra', 'aquarius'],
     'water': ['cancer', 'scorpio', 'pisces']
+}
+
+dates_dict = {
+    'aries': {3: [21, 31], 4: [1, 20]},
+    'taurus': {4: [21, 30], 5: [1, 21]},
+    'gemini': {5: [22, 31], 6: [1, 21]},
+    'cancer': {6: [22, 30], 7: [1, 22]},
+    'leo': {7: [23, 31], 8: [1, 21]},
+    'virgo': {8: [22, 31], 9: [1, 23]},
+    'libra': {9: [24, 30], 10: [1, 23]},
+    'scorpio': {10: [24, 31], 11: [1, 22]},
+    'sagittarius': {11: [23, 30], 12: [1, 22]},
+    'capricorn': {12: [23, 31], 1: [1, 20]},
+    'aquarius': {1: [21, 31], 2: [1, 19]},
+    'pisces': {2: [20, 29], 3: [1, 20]}
 }
 
 
@@ -84,3 +99,11 @@ def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
     name_zodiac = zodiacs[sign_zodiac - 1]
     redirect_url = reverse('horoscope-name', args=[name_zodiac])
     return HttpResponseRedirect(redirect_url)
+
+
+def get_info_by_date(request, month, day):
+    for sign in dates_dict.keys():
+        for sign_month in dates_dict[sign].keys():
+            if sign_month == month and dates_dict[sign][sign_month][0] <= day <= dates_dict[sign][sign_month][1]:
+                redirect_url = reverse('horoscope-name', args=[sign])
+                return HttpResponseRedirect(redirect_url)
