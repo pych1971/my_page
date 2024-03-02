@@ -19,6 +19,13 @@ zodiac_dict = {
     'pisces': 'Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта).',
 }
 
+type_dict = {
+    'fire': ['aries', 'leo', 'sagittarius'],
+    'earth': ['taurus', 'virgo', 'capricorn'],
+    'air': ['gemini', 'libra', 'aquarius'],
+    'water': ['cancer', 'scorpio', 'pisces']
+}
+
 
 def index(request):
     zodiacs = list(zodiac_dict)
@@ -31,6 +38,34 @@ def index(request):
         {li_elements}
     </ol>
     """
+    return HttpResponse(response)
+
+
+def type(request):
+    types = list(type_dict)
+    li_elements = ''
+    for type_element in types:
+        redirect_path = reverse('type-name', args=[type_element])
+        li_elements += f"<li><a href={redirect_path}>{type_element.title()}</a></li>"
+    response = f"""
+    <ol>
+        {li_elements}
+    </ol>
+    """
+    return HttpResponse(response)
+
+
+def get_elements_by_type(request, type_element):
+    zodiacs = type_dict[type_element]
+    li_elements = ''
+    for sign in zodiacs:
+        redirect_path = reverse('horoscope-name', args=[sign])
+        li_elements += f"<li><a href={redirect_path}>{sign.title()}</a></li>"
+    response = f"""
+        <ol>
+            {li_elements}
+        </ol>
+        """
     return HttpResponse(response)
 
 
