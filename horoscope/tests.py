@@ -23,6 +23,7 @@ class TestHoroscope(TestCase):
             self.assertIn(zodiac_dict[sign], response.content.decode())
 
     def test_libra_redirect(self):
-        response = self.client.get('/horoscope/7')
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/horoscope/libra')
+        for i in range(12):
+            response = self.client.get(f'/horoscope/{i + 1}')
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(response.url, f'/horoscope/{list(zodiac_dict)[i]}')
