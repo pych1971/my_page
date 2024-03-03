@@ -15,6 +15,10 @@ days_dict = {
 }
 
 
+def get_index(request):
+    return render(request, 'week_days/greeting.html')
+
+
 def get_info_about_week_day(request, week_day):
     description = days_dict.get(week_day)
     if description:
