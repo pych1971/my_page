@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class FourDigitYearConverter:
     regex = "[0-9]{4}"
 
@@ -19,6 +20,7 @@ class MyFloatConverter:
     def to_url(self, value):
         return str(value)
 
+
 class MyDateConverter:
     regex = "^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-](19|20)\d\d$"
 
@@ -27,3 +29,13 @@ class MyDateConverter:
 
     def to_url(self, value):
         return value.strftime('%d-%m-%Y')
+
+
+class SplitConverter:
+    regex = "([a-zA-Z]+,)+[a-zA-Z]+"
+
+    def to_python(self, value):
+        return value.split(",")
+
+    def to_url(self, value):
+        return ",".join(value)

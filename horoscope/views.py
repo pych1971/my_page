@@ -54,6 +54,10 @@ def get_me_date_converters(request, sign_zodiac):
     return HttpResponse(f'Вы передали дату - {sign_zodiac}')
 
 
+def get_my_comma_separated_string(request, sign_zodiac):
+    return HttpResponse(f'Вы передали строку - {sign_zodiac}')
+
+
 def index(request):
     zodiacs = list(zodiac_dict)
     li_elements = ''
