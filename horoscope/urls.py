@@ -5,7 +5,7 @@ register_converter(converters.FourDigitYearConverter, "yyyy")
 register_converter(converters.MyFloatConverter, "my_float")
 register_converter(converters.MyDateConverter, "my_date")
 register_converter(converters.SplitConverter, "my_comma_separated_string")
-register_converter(converters.UpperConvertor, "my_upper_string")
+# register_converter(converters.UpperConvertor, "my_upper_string")
 
 urlpatterns = [
     path('', views.index),
@@ -17,6 +17,6 @@ urlpatterns = [
     path('<yyyy:sign_zodiac>', views.get_yyyy_converters),
     path('<int:sign_zodiac>', views.get_info_about_sign_zodiac_by_number),
     path('<my_float:sign_zodiac>', views.get_my_float_converters),
-    path('<my_upper_string:sign_zodiac>', views.get_my_upper_string),
+    # path('<my_upper_string:sign_zodiac>', views.get_my_upper_string),
     path('<str:sign_zodiac>', views.get_info_about_sign_zodiac, name='horoscope-name'),
 ]
