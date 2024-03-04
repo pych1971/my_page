@@ -43,6 +43,19 @@ dates_dict = {
     'pisces': {2: [20, 29], 3: [1, 20]}
 }
 
+people = [
+    'Жукова Анна Константиновна',
+    'Юлия Степановна Потапова',
+    'Гущин Аполлинарий Тимурович',
+    'Дорофей Ярославович Третьяков',
+    'Селезнева Анна Тарасовна',
+    'Федотов Симон Харлампьевич',
+    'Красильникова Вера Борисовна',
+    'Бажен Тихонович Костин',
+    'Веселова Анжелика Тимофеевна',
+    'Щербаков Самсон Феодосьевич'
+]
+
 
 def get_yyyy_converters(request, sign_zodiac):
     return HttpResponse(f'Вы передали число из четырёх цифр - {sign_zodiac}')
@@ -71,6 +84,13 @@ def index(request):
         'zodiacs': zodiacs,
     }
     return render(request, 'horoscope/index.html', context=context)
+
+
+def get_list_of_people(request):
+    context = {
+        'people': people,
+    }
+    return render(request, 'horoscope/people.html', context=context)
 
 
 def type(request):
