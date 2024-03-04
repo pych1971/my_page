@@ -66,16 +66,11 @@ def get_my_upper_string(request, sign_zodiac):
 
 def index(request):
     zodiacs = list(zodiac_dict)
-    li_elements = ''
-    for sign in zodiacs:
-        redirect_path = reverse('horoscope-name', args=[sign])
-        li_elements += f"<li><a href={redirect_path}>{sign.title()}</a></li>"
-    response = f"""
-    <ol>
-        {li_elements}
-    </ol>
-    """
-    return HttpResponse(response)
+    # f"<li><a href={redirect_path}>{sign.title()}</a></li>"
+    context = {
+        'zodiacs': zodiacs,
+    }
+    return render(request, 'horoscope/index.html', context=context)
 
 
 def type(request):
