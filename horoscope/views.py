@@ -145,3 +145,12 @@ def get_info_by_date(request, month, day):
             if sign_month == month and dates_dict[sign][sign_month][0] <= day <= dates_dict[sign][sign_month][1]:
                 redirect_url = reverse('horoscope-name', args=[sign])
                 return HttpResponseRedirect(redirect_url)
+
+
+def get_info_about_Keanu_Reeves(request):
+    data = {
+        'year_born': 1964,
+        'city_born': 'Бейрут',
+        'movie_name': 'Мой личный штат Айдахо'
+    }
+    return render(request, 'horoscope/Keanu_Reeves.html', context=data)

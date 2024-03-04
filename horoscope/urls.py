@@ -9,6 +9,7 @@ register_converter(converters.SplitConverter, "my_comma_separated_string")
 
 urlpatterns = [
     path('', views.index),
+    path('Keanu_Reeves', views.get_info_about_Keanu_Reeves),
     path('<int:month>/<int:day>', views.get_info_by_date),
     path('type', views.type),
     path('type/<str:type_element>', views.get_elements_by_type, name='type-name'),
