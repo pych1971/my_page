@@ -154,3 +154,12 @@ def get_info_about_Keanu_Reeves(request):
         'movie_name': 'Мой личный штат Айдахо'
     }
     return render(request, 'horoscope/Keanu_Reeves.html', context=data)
+
+
+def get_guinness_world_records(request):
+    context = {
+        'power_man': 'Narve Laeret',
+        'bar_name': 'Bob’s BBQ & Grill',
+        'count_needle': 1790,
+    }
+    return render(request, 'horoscope/guinnessworldrecords.html', context=context)
