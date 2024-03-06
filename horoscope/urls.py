@@ -13,6 +13,7 @@ urlpatterns = [
     path('guinnessworldrecords', views.get_guinness_world_records),
     path('people', views.get_list_of_people),
     path('people_detail', views.get_list_of_people_details),
+    path('beautiful_table', views.get_beautiful_table),
     path('<int:month>/<int:day>', views.get_info_by_date),
     path('type', views.type),
     path('type/<str:type_element>', views.get_elements_by_type, name='type-name'),

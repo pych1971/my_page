@@ -90,6 +90,8 @@ def get_list_of_people(request):
     }
     return render(request, 'horoscope/people.html', context=context)
 
+def get_beautiful_table(request):
+    return render(request, 'horoscope/beautiful_table.html')
 
 def get_list_of_people_details(request):
     context = {
