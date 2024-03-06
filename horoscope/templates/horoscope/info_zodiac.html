@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load my_filter %}
+{% load my_filters %}
 
 {% block css_additional %}
 <link rel="stylesheet" href="{% static 'horoscope/css/info.css' %}">
@@ -13,6 +14,12 @@
 
 
 {% block content %}
+    {% for i in 10|times %}
+        <h2>Hello</h2>
+    {% endfor %}
+    {% for c in 3|filter_range:8 %}
+        <h2>{{ c }}</h2>
+    {% endfor %}
     {% include 'includes/navbar.html' %}
     <h1>{{ description|split|first }}</h1>
     {% if description is None %}
