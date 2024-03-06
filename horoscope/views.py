@@ -130,12 +130,10 @@ def get_elements_by_type(request, type_element):
 
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
-    zodiacs = list(zodiac_dict)
     data = {
         'description': description,
         'sign': sign_zodiac,
-        # 'sign_name': description.split()[0],
-        'zodiacs': zodiacs,
+        'zodiacs': zodiac_dict,
     }
     return render(request, 'horoscope/info_zodiac.html', context=data)
 
