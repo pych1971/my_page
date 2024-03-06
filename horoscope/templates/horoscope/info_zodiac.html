@@ -6,6 +6,7 @@
 
 
 {% block content %}
+    {% include 'includes/navbar.html' only with a=100 b=200 %}
     {% if description is None %}
         <h2>Неправильный знак зодиака {{sign|upper}}</h2>
     {% else %}

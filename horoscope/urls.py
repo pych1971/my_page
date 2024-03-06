@@ -8,7 +8,7 @@ register_converter(converters.SplitConverter, "my_comma_separated_string")
 # register_converter(converters.UpperConvertor, "my_upper_string")
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='horoscope-index'),
     path('Keanu_Reeves', views.get_info_about_Keanu_Reeves),
     path('guinnessworldrecords', views.get_guinness_world_records),
     path('people', views.get_list_of_people),
